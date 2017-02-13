@@ -1,8 +1,111 @@
 <html>
 <head>
-  <title>Clipped</title>
+  <link rel="stylesheet" type="text/css" href="res/css/bootstrap.min.css"/>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-  <h2>From Nowhere to Now here!</h2>
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">MaterialSound</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <ul class="nav navbar-nav">
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div id="content" class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <!-- Soundboard Row -->
+          <div class="col-md-4">
+            <button class="btn btn-primary" onclick="showPage('WeirdBeard')">WeirdBeard</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-primary">Filler</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-primary">Extra Filler</button>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="buttonDiv">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  function showPage(page)
+  {
+    var packLoc = "res/package/"+page;
+    var configLoc = packLoc+"/config.json";
+
+    $.getJSON(configLoc, function(data){jsonSuc(data, packLoc)});
+  }
+  function jsonSuc(data, paloc)
+  {
+    count = 0;
+    $.each(data, function(key, val)
+    {
+      count++;
+    });
+    $("#buttonDiv").html("");
+    console.log(data);
+    elCount = 0;
+    $.each( data, function( key, val ) {
+      elCount++;
+      var newRow = false;
+      // if(elCount == 12)
+      // {
+      //   var newRow = true;
+      // }
+
+      var audioSrcId = "aSrc" + key;
+      if(newRow)
+      {
+        $("#buttonDiv").append("<div class='row'>");
+      }
+      $("#buttonDiv").append("<div class='col-md-"+Math.ceil(12/count)+"'>" +"<audio id='"+audioSrcId+"' src='"+paloc +"/"+val.file+"'type='audio/mp3'></audio>"+"<button class='btn btn-primary'onclick='playSound(\""+audioSrcId+"\")'>"+val.name+"</button>"+"</div>");
+      $("#buttonDiv").append("<audio id='"+audioSrcId+"' src='"+paloc +"/"+val.file+"'type='audio/"+val.type+"'></audio>");
+      $("#buttonDiv").append("<button class='btn btn-primary'onclick='playSound(\""+audioSrcId+"\")'>"+val.name+"</button>");
+      $("#buttonDiv").append("</div>");
+
+      // if(newRow)
+      // {
+      //   $("#buttonDiv").append("</div>");
+      //   elCount = 0;
+      // }
+      console.log(key + " " + val.file);
+
+      var newRow = false;
+    });
+  }
+  function playSound(audioSrc)
+  {
+    var audioEl = document.getElementById(audioSrc);
+    if(audioEl.paused){
+      audioEl.play();
+    }else {
+      audioEl.pause();
+      audioEl.load();
+    }
+  }
+  </script>
 </body>
 </html>
