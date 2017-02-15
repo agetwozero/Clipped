@@ -1,4 +1,4 @@
-//Grab board name and show
+//Grab board name and show buttons
 function loadBoard(board)
 {
   var packLoc = "res/package/"+board;
@@ -6,7 +6,8 @@ function loadBoard(board)
 
   $.getJSON(configLoc, function(data){jsonSuc(data, packLoc, board)});
 }
-
+//success function off json call in loadBoard
+//wich loads the audio sources and couples them to the buttons
 function jsonSuc(data, paloc, board)
 {
   count = 0;
@@ -42,21 +43,7 @@ function jsonSuc(data, paloc, board)
       }else {
         break;
       }
-
-
       currentItemCount++;
     }
   }
-
-  // $.each( data, function( key, val ) {
-  //
-  //
-  //   if(newRow)
-  //   {
-  //     $("#buttonDiv").append("<div class='row'>");
-  //   }
-  //
-  //   $("#buttonDiv").append(audioString);
-  //   // $("#buttonDiv").append("<div class='col-md-3 btn-item'>" +"<audio id='"+audioSrcId+"' src='"+paloc +"/"+val.file+"'type='audio/mp3'></audio>"+"<button class='btn btn-primary'onclick='playSound(\""+audioSrcId+"\")'>"+val.name+"</button>"+"</div>");
-  // });
 }

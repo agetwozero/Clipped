@@ -1,3 +1,4 @@
+//Function to load all boards wich exist on the server
 function showBoards()
 {
   $("#buttonDiv").html("");
@@ -5,7 +6,8 @@ function showBoards()
   var boardsLoc = "res/package/boards.json";
   $.getJSON(boardsLoc, function(data){showBoardsSuc(data)});
 }
-
+//success function off json call in showBoards
+//wich draws a button for every board and couples them to the loadBoard function
 function showBoardsSuc(data)
 {
   $.each(data, function(key, val)

@@ -42,13 +42,13 @@
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle navbar-hamburger" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><b>Clip</b>ped</a>
+                <a class="navbar-brand navbar-my-brand" href="#"><b>Clip</b>ped</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -98,8 +98,27 @@
     <script>
       $("#boards").click(function(){
         showBoards();
-        $(".navbar-toggle").collapse();
+        closeNav();
       })
+
+      function closeNav()
+      {
+        $(".navbar-collapse").stop().css({ 'height': '1px' }).removeClass('in').addClass("collapsing");
+        $(".navbar-toggle").stop().removeClass('collapsed');
+
+      }
+    //TODO: Fix this function
+    $(document).ready(function () {
+      $('html').click(function (event) {
+        var clickover = $(event.target);
+        if(!clickover.hasClass("navbar-toggle"))
+        {
+          closeNav();
+        }
+
+    });
+      });
+
     </script>
     <!-- /.container -->
 </body>

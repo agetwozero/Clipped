@@ -1,3 +1,6 @@
+//
+//Function to play the selected sound
+//
 function playSound(audioSrc)
 {
   var audioEl = document.getElementById(audioSrc);
@@ -8,3 +11,4 @@ function playSound(audioSrc)
     audioEl.load();
   }
 }
+//TODO: add function to keep playing when pressed
