@@ -9,21 +9,22 @@
     <meta name="author" content="AgeTwoZero">
 
     <title>Clipped</title>
-
+    <!--CSS-->
     <!-- Bootswatch paper -->
-    <link href="res/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="res/css/template.css" rel="stylesheet">
+    <link href="css/template.css" rel="stylesheet">
 
-    <!--CDN-->
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!--JS-->
+    <!--jquery-->
+    <script src="js/jquery-3.1.1.min.js" type="text/javascript"/></script>
+    <!--Bootstrap-->
+    <script src="js/bootstrap.min.js" type="text/javascript"/></script>
 
     <!-- appScripts -->
-    <script src="res/js/clipped-show-boards.js" type="text/javascript"/></script>
-    <script src="res/js/clipped-load-board.js" type="text/javascript"/></script>
-    <script src="res/js/clipped-play.js" type="text/javascript"/></script>
+    <script src="js/clipped-show-boards.js" type="text/javascript"/></script>
+    <script src="js/clipped-load-board.js" type="text/javascript"/></script>
+    <script src="js/clipped-play.js" type="text/javascript"/></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -97,6 +98,7 @@
     <script>
       $("#boards").click(function(){
         showBoards();
+        $(".navbar-toggle").collapse();
       })
     </script>
     <!-- /.container -->
